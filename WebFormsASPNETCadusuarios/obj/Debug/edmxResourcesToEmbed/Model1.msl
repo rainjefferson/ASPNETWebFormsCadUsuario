@@ -1,6 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="webforms_vsModelStoreContainer" CdmEntityContainer="webforms_vsEntities">
+    <EntitySetMapping Name="clientes">
+      <EntityTypeMapping TypeName="webforms_vsModel.clientes">
+        <MappingFragment StoreEntitySet="clientes">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+          <ScalarProperty Name="razao_social" ColumnName="razao_social" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="usuarios">
       <EntityTypeMapping TypeName="webforms_vsModel.usuarios">
         <MappingFragment StoreEntitySet="usuarios">

@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\jeffe\Desktop\Curso Projeto Vs ASP.NET Web API\WebForms Cad Usuarios\WebFormsASPNETCadusuarios\WebFormsASPNETCadusuarios\Model1.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\jeffe\Desktop\Curso Projeto Vs ASP.NET Web API\WebForms Cad Usuarios\ASPNETWebFormsCadUsuario\WebFormsASPNETCadusuarios\Model1.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

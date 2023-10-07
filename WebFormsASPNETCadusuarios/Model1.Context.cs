@@ -25,6 +25,7 @@ namespace WebFormsASPNETCadusuarios
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<clientes> clientes { get; set; }
         public virtual DbSet<usuarios> usuarios { get; set; }
     }
 }

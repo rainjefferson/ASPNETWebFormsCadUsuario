@@ -5,14 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="webforms_vsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'webforms_vs.dbo.usuarios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" Nullable="false" />
+          <Property Name="cnpj" Type="varchar" MaxLength="14" Nullable="false" />
+          <Property Name="razao_social" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="codigo" />
-            <PropertyRef Name="nome" />
-            <PropertyRef Name="email" />
-            <PropertyRef Name="senha" />
           </Key>
           <Property Name="codigo" Type="int" Nullable="false" />
           <Property Name="nome" Type="varchar" MaxLength="50" Nullable="false" />
@@ -20,26 +23,25 @@ warning 6002: The table/view 'webforms_vs.dbo.usuarios' does not have a primary 
           <Property Name="senha" Type="varchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityContainer Name="webforms_vsModelStoreContainer">
-          <EntitySet Name="usuarios" EntityType="Self.usuarios" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [usuarios].[codigo] AS [codigo], 
-    [usuarios].[nome] AS [nome], 
-    [usuarios].[email] AS [email], 
-    [usuarios].[senha] AS [senha]
-    FROM [dbo].[usuarios] AS [usuarios]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="clientes" EntityType="Self.clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="webforms_vsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="clientes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" />
+          <Property Name="cnpj" Type="String" MaxLength="14" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="razao_social" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
         <EntityType Name="usuarios">
           <Key>
             <PropertyRef Name="codigo" />
-            <PropertyRef Name="nome" />
-            <PropertyRef Name="email" />
-            <PropertyRef Name="senha" />
           </Key>
           <Property Name="codigo" Type="Int32" Nullable="false" />
           <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
@@ -47,6 +49,7 @@ warning 6002: The table/view 'webforms_vs.dbo.usuarios' does not have a primary 
           <Property Name="senha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="webforms_vsEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clientes" EntityType="Self.clientes" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" />
         </EntityContainer>
       </Schema>
@@ -55,6 +58,15 @@ warning 6002: The table/view 'webforms_vs.dbo.usuarios' does not have a primary 
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="webforms_vsModelStoreContainer" CdmEntityContainer="webforms_vsEntities">
+          <EntitySetMapping Name="clientes">
+            <EntityTypeMapping TypeName="webforms_vsModel.clientes">
+              <MappingFragment StoreEntitySet="clientes">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cnpj" ColumnName="cnpj" />
+                <ScalarProperty Name="razao_social" ColumnName="razao_social" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="webforms_vsModel.usuarios">
               <MappingFragment StoreEntitySet="usuarios">

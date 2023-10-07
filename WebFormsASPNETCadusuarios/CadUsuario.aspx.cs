@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using WebFormsASPNETCadusuarios.DAO;
 
 namespace WebFormsASPNETCadusuarios
 {
@@ -37,7 +38,22 @@ namespace WebFormsASPNETCadusuarios
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                usuarios usuario = new usuarios();
+                usuario.codigo = int.Parse(txtCodigo.Text);
+                usuario.nome = txtNome.Text;
+                usuario.senha = txtSenha.Text;
+                usuario.email = txtEmail.Text;
 
+                UsuarioDao uDao = new UsuarioDao();
+                uDao.CadastrarUsuario(usuario);
+
+            }
+            catch (Exception E)
+            {
+                ExibirMensagem("Erro ao salvar cadastro do usuario!" + E.Message);
+            }
         }
     }
 }
